@@ -76,10 +76,10 @@ const Login = (props) => {
             passwordIsValid === false ? classes.invalid : ''
           }`}
         >
-          <label htmlFor="password">EXP. DATE (MM/YY)</label>
+          <label htmlFor="expDate">EXP. DATE (MM/YY)</label>
           <input
-            type="password"
-            id="password"
+            type="number"
+            id="expDate"
             value={enteredPassword}
             onChange={passwordChangeHandler}
             onBlur={validatePasswordHandler}
@@ -90,10 +90,10 @@ const Login = (props) => {
             passwordIsValid === false ? classes.invalid : ''
           }`}
         >
-          <label htmlFor="password">CVC</label>
+          <label htmlFor="cvc">CVC</label>
           <input
-            type="password"
-            id="password"
+            type="number"
+            id="cvc"
             value={enteredPassword}
             onChange={passwordChangeHandler}
             onBlur={validatePasswordHandler}

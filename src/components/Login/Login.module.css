@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+
 .login {
   width: 90%;
   max-width: 40rem;
@@ -18,15 +20,17 @@
 }
 
 .control label {
-  font-weight: bold;
+  font-family: 'Space Grotesk', sans-serif;
   flex: 1;
   color: #464646;
   margin-bottom: 0.5rem;
 }
 
 .control input {
-  flex: 3;
-  font: inherit;
+  /* flex: 3; */
+  width:100%;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size:1.2rem;
   padding: 0.35rem 0.35rem;
   border-radius: 6px;
   border: 1px solid #ccc;
