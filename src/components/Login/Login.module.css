@@ -7,9 +7,9 @@
 
 .control {
   margin: 1rem 0;
-  display: flex;
+  /* display: flex;
   align-items: stretch;
-  flex-direction: column;
+  flex-direction: column; */
 }
 
 .control label,
