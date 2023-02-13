@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import Card from '../UI/Card/Card';
-import classes from './Login.module.css';
-import Button from '../UI/Button/Button';
+import Card from "../UI/Card/Card";
+import classes from "./Login.module.css";
+import Button from "../UI/Button/Button";
 
 const Login = (props) => {
-  const [enteredEmail, setEnteredEmail] = useState('');
+  const [enteredEmail, setEnteredEmail] = useState("");
   const [emailIsValid, setEmailIsValid] = useState();
-  const [enteredPassword, setEnteredPassword] = useState('');
+  const [enteredPassword, setEnteredPassword] = useState("");
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
@@ -15,7 +15,7 @@ const Login = (props) => {
     setEnteredEmail(event.target.value);
 
     setFormIsValid(
-      event.target.value.includes('@') && enteredPassword.trim().length > 6
+      event.target.value.includes("@") && enteredPassword.trim().length > 6
     );
   };
 
@@ -23,12 +23,12 @@ const Login = (props) => {
     setEnteredPassword(event.target.value);
 
     setFormIsValid(
-      event.target.value.trim().length > 6 && enteredEmail.includes('@')
+      event.target.value.trim().length > 6 && enteredEmail.includes("@")
     );
   };
 
   const validateEmailHandler = () => {
-    setEmailIsValid(enteredEmail.includes('@'));
+    setEmailIsValid(enteredEmail.includes("@"));
   };
 
   const validatePasswordHandler = () => {
@@ -45,7 +45,7 @@ const Login = (props) => {
       <form onSubmit={submitHandler}>
         <div
           className={`${classes.control} ${
-            emailIsValid === false ? classes.invalid : ''
+            emailIsValid === false ? classes.invalid : ""
           }`}
         >
           <label htmlFor="email">CARDHOLDER NAME</label>
@@ -59,49 +59,63 @@ const Login = (props) => {
         </div>
         <div
           className={`${classes.control} ${
-            passwordIsValid === false ? classes.invalid : ''
+            passwordIsValid === false ? classes.invalid : ""
           }`}
         >
-          <label htmlFor="password">CARD NUMBER</label>
+          <label htmlFor="cardNo">CARD NUMBER</label>
           <input
-            type="password"
-            id="password"
+            type="tel"
+            pattern="[0-9\s]{13,19}"
             value={enteredPassword}
             onChange={passwordChangeHandler}
             onBlur={validatePasswordHandler}
           />
         </div>
-        <div
-          className={`${classes.control} ${
-            passwordIsValid === false ? classes.invalid : ''
-          }`}
-        >
-          <label htmlFor="expDate">EXP. DATE (MM/YY)</label>
-          <input
-            type="number"
-            id="expDate"
-            value={enteredPassword}
-            onChange={passwordChangeHandler}
-            onBlur={validatePasswordHandler}
-          />
-        </div>
-        <div
-          className={`${classes.control} ${
-            passwordIsValid === false ? classes.invalid : ''
-          }`}
-        >
-          <label htmlFor="cvc">CVC</label>
-          <input
-            type="number"
-            id="cvc"
-            value={enteredPassword}
-            onChange={passwordChangeHandler}
-            onBlur={validatePasswordHandler}
-          />
+        <div className={classes.holder}>
+          <div
+            className={`${classes.control} ${
+              passwordIsValid === false ? classes.invalid : ""
+            }`}
+          >
+            <label htmlFor="expDate">EXP. DATE (MM/YY)</label>
+            <div className={classes.subHolder}>
+              <input
+                type="number"
+                className={classes.holder1}
+                id="expDate"
+                value={enteredPassword}
+                onChange={passwordChangeHandler}
+                onBlur={validatePasswordHandler}
+              />
+              <input
+                type="number"
+                className={classes.holder2}
+                id="expDate"
+                value={enteredPassword}
+                onChange={passwordChangeHandler}
+                onBlur={validatePasswordHandler}
+              />
+            </div>
+          </div>
+          <div
+            className={`${classes.control} ${
+              passwordIsValid === false ? classes.invalid : ""
+            }`}
+          >
+            <label htmlFor="cvc">CVC</label>
+            <input
+              type="number"
+              className={classes.holder3}
+              id="cvc"
+              value={enteredPassword}
+              onChange={passwordChangeHandler}
+              onBlur={validatePasswordHandler}
+            />
+          </div>
         </div>
         <div className={classes.actions}>
           <Button type="submit" className={classes.btn} disabled={!formIsValid}>
-            Login
+            Confirm
           </Button>
         </div>
       </form>
