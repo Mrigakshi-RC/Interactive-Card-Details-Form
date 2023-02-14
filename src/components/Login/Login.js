@@ -5,8 +5,13 @@ import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
 
 const Login = (props) => {
+  const numbersError = "Wrong format, numbers only";
+  const lettersError = "Wrong format, alphabets only";
+  const blankError = "Can't be blank";
+  const invalidError = "Invalid value, try again";
+
   const [enteredName, setenteredName] = useState("");
-  const [nameisValid, setNameIsValid] = useState();
+  const [nameIsValid, setNameIsValid] = useState();
 
   const [enteredCard, setEnteredCard] = useState("");
   const [cardIsValid, setCardIsValid] = useState();
@@ -22,59 +27,84 @@ const Login = (props) => {
 
   const [formIsValid, setFormIsValid] = useState(false);
 
+  const parameters=[nameIsValid,cardIsValid,monthIsValid,yearIsValid,CVCIsValid];
+  const values=[enteredName,enteredCard,enteredMonth,enteredYear,enteredCVC];
+
+  const checkEmpty = (arr, message) => {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].length === 0) {
+        return blankError;
+      }
+    }
+    return message;
+  };
+
+  const goodToGo = (value) => {
+    let count=0;
+    for (let i=0; i<parameters.length; i++){
+      if (parameters[i] && values[i].length!==0){
+        count+=1;
+      }
+    }
+    return count>=4;
+  }
+
   const nameChangeHandler = (event) => {
     setenteredName(event.target.value);
     setFormIsValid(
-      /^[a-zA-Z ]*$/.test(event.target.value) && /^[0-9 ]*$/.test(enteredCard)
+      event.target.value.length!==0 && /^[a-zA-Z ]*$/.test(event.target.value) && goodToGo(nameIsValid)
     );
   };
 
   const passwordChangeHandler = (event) => {
     setEnteredCard(event.target.value);
     setFormIsValid(
-      /^[0-9 ]*$/.test(event.target.value) && /^[a-zA-Z ]*$/.test(enteredName)
+      event.target.value.length!==0 && /^[0-9 ]*$/.test(event.target.value) && goodToGo(cardIsValid)
     );
   };
 
   const monthChangeHandler = (event) => {
     setEnteredMonth(event.target.value);
     setFormIsValid(
-      0<Number(event.target.value) && Number(event.target.value)<=31 && /^[a-zA-Z ]*$/.test(enteredName)
+      event.target.value.length!==0 && 0 < Number(event.target.value) &&
+        Number(event.target.value) <= 31 &&
+        goodToGo(monthIsValid)
     );
   };
 
   const yearChangeHandler = (event) => {
     setEnteredYear(event.target.value);
     setFormIsValid(
-      /^[0-9 ]*$/.test(event.target.value) && /^[a-zA-Z ]*$/.test(enteredName)
+      event.target.value.length!==0 && /^[0-9 ]*$/.test(event.target.value) && goodToGo(yearIsValid)
     );
   };
 
   const CVCChangeHandler = (event) => {
     setEnteredCVC(event.target.value);
     setFormIsValid(
-      /^[0-9 ]*$/.test(event.target.value) && /^[a-zA-Z ]*$/.test(enteredName)
+      event.target.value.length!==0 && /^[0-9 ]*$/.test(event.target.value) && goodToGo(CVCIsValid)
     );
   };
 
-  const validateEmailHandler = () => {
-    setNameIsValid(/^[a-zA-Z ]*$/.test(enteredName) );
+  const validateNameHandler = () => {
+    setNameIsValid(enteredName.length!==0 && /^[a-zA-Z ]*$/.test(enteredName));
   };
 
-  const validatePasswordHandler = () => {
-    setCardIsValid(/^[0-9 ]*$/.test(enteredCard));
+  const validateCardHandler = () => {
+    setCardIsValid(enteredCard.length!==0 && /^[0-9 ]*$/.test(enteredCard));
   };
 
   const validateMonthHandler = () => {
-    setMonthIsValid(0<Number(enteredMonth) && Number(enteredMonth)<=31);
+    setMonthIsValid(enteredMonth.length!==0 && 0 < Number(enteredMonth) && Number(enteredMonth) <= 12
+    );
   };
 
   const validateYearHandler = () => {
-    setYearIsValid(/^[0-9 ]*$/.test(enteredYear));
+    setYearIsValid(enteredYear.length!==0 && /^[0-9 ]*$/.test(enteredYear));
   };
 
   const validateCVCHandler = () => {
-    setCVCIsValid(/^[0-9 ]*$/.test(enteredCVC));
+    setCVCIsValid(enteredCVC.length!==0 && /^[0-9 ]*$/.test(enteredCVC));
   };
 
   const submitHandler = (event) => {
@@ -85,9 +115,10 @@ const Login = (props) => {
   return (
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
+        {/* cardholder name */}
         <div
           className={`${classes.control} ${
-            nameisValid === false ? classes.invalid : ""
+            nameIsValid === false ? classes.invalid : ""
           }`}
         >
           <label htmlFor="name">CARDHOLDER NAME</label>
@@ -96,10 +127,19 @@ const Login = (props) => {
             id="name"
             value={enteredName}
             onChange={nameChangeHandler}
-            onBlur={validateEmailHandler}
+            onBlur={validateNameHandler}
           />
-          <div id="ename" className={classes.emsg}></div>
+          <div
+            id="ename"
+            className={`${classes.emsg} ${
+              nameIsValid === false ? classes.invalidMsg : ""
+            }`}
+          >
+            <p>{checkEmpty([enteredCard], lettersError)}</p>
+          </div>
         </div>
+
+        {/* card number */}
         <div
           className={`${classes.control} ${
             cardIsValid === false ? classes.invalid : ""
@@ -111,14 +151,25 @@ const Login = (props) => {
             id="cardNo"
             value={enteredCard}
             onChange={passwordChangeHandler}
-            onBlur={validatePasswordHandler}
+            onBlur={validateCardHandler}
           />
-          <div id="ecard" className={classes.emsg}></div>
+          <div
+            id="ecard"
+            className={`${classes.emsg} ${
+              cardIsValid === false ? classes.invalidMsg : ""
+            }`}
+          >
+            <p>{checkEmpty([enteredCard], numbersError)}</p>
+          </div>
         </div>
+
+        {/* expiry date */}
         <div className={classes.holder}>
           <div
             className={`${classes.control} ${
-              monthIsValid === false || yearIsValid === false ? classes.invalid : ""
+              monthIsValid === false || yearIsValid === false
+                ? classes.invalid
+                : ""
             }`}
           >
             <label htmlFor="expMonth">EXP. DATE (MM/YY)</label>
@@ -142,8 +193,19 @@ const Login = (props) => {
                 onBlur={validateYearHandler}
               />
             </div>
-            <div id="eexp" className={classes.emsg}></div>
+            <div
+              id="eexp"
+              className={`${classes.emsg} ${
+                monthIsValid === false || yearIsValid === false
+                  ? classes.invalidMsg
+                  : ""
+              }`}
+            >
+              <p>{checkEmpty([enteredMonth,enteredYear], invalidError)}</p>
+            </div>
           </div>
+
+          {/* CVC */}
           <div
             className={`${classes.control} ${
               CVCIsValid === false ? classes.invalid : ""
@@ -158,7 +220,14 @@ const Login = (props) => {
               onChange={CVCChangeHandler}
               onBlur={validateCVCHandler}
             />
-            <div id="ecvc" className={classes.emsg}></div>
+            <div
+              id="ecvc"
+              className={`${classes.emsg} ${
+                CVCIsValid===false ? classes.invalidMsg : ""
+              }`}
+            >
+              <p>{checkEmpty([enteredCVC], numbersError)}</p>
+            </div>
           </div>
         </div>
         <div className={classes.actions}>

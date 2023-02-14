@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
 
+:root{
+  --red: hsl(0, 100%, 66%);
+}
+
+*{
+  font-family: 'Space Grotesk', sans-serif;
+}
+
 .login {
   width: 90%;
   max-width: 40rem;
@@ -20,7 +28,6 @@
 }
 
 .control label {
-  font-family: 'Space Grotesk', sans-serif;
   flex: 1;
   color: #464646;
   margin-bottom: 0.5rem;
@@ -29,7 +36,6 @@
 .control input {
   /* flex: 3; */
   width:100%;
-  font-family: 'Space Grotesk', sans-serif;
   font-size:1.2rem;
   padding: 0.35rem 0.35rem;
   border-radius: 6px;
@@ -49,7 +55,14 @@
 }
 
 .emsg{
-  margin-top:0.5rem;
+  display:none;
+}
+
+.invalidMsg{
+  display:block;
+  margin-top:-0.5rem;
+  font-size:0.8rem;
+  color:var(--red);
 }
 
 .holder .control .holder1{
@@ -74,8 +87,8 @@
 }
 
 .control.invalid input {
-  border-color: red;
-  background: #fbdada;
+  border-color: var(--red);
+  /* background: #fbdada; */
 }
 
 .actions {
