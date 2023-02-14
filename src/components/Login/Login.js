@@ -10,6 +10,8 @@ const Login = (props) => {
   const blankError = "Can't be blank";
   const invalidError = "Invalid value, try again";
 
+  const [flag, setFlag] = useState(0);
+
   const [enteredName, setenteredName] = useState("");
   const [nameIsValid, setNameIsValid] = useState();
 
@@ -54,13 +56,23 @@ const Login = (props) => {
     setFormIsValid(
       event.target.value.length!==0 && /^[a-zA-Z ]*$/.test(event.target.value) && goodToGo(nameIsValid)
     );
+    props.trigger2(event.target.value);
   };
 
-  const passwordChangeHandler = (event) => {
+  const cardChangeHandler = (event) => {
+    if (flag===0 && event.target.value.trim().length%4===0){
+      event.target.value+=" ";
+      setFlag(1);
+    }
+    else if (flag===1 && event.target.value.trim().length%5===4){
+      event.target.value+=" ";
+    }
+
     setEnteredCard(event.target.value);
     setFormIsValid(
       event.target.value.length!==0 && /^[0-9 ]*$/.test(event.target.value) && goodToGo(cardIsValid)
     );
+    props.trigger1(event.target.value);
   };
 
   const monthChangeHandler = (event) => {
@@ -70,6 +82,7 @@ const Login = (props) => {
         Number(event.target.value) <= 31 &&
         goodToGo(monthIsValid)
     );
+    props.trigger3(event.target.value);
   };
 
   const yearChangeHandler = (event) => {
@@ -77,6 +90,7 @@ const Login = (props) => {
     setFormIsValid(
       event.target.value.length!==0 && /^[0-9 ]*$/.test(event.target.value) && goodToGo(yearIsValid)
     );
+    props.trigger4(event.target.value);
   };
 
   const CVCChangeHandler = (event) => {
@@ -151,7 +165,7 @@ const Login = (props) => {
             type="text"
             id="cardNo"
             value={enteredCard}
-            onChange={passwordChangeHandler}
+            onChange={cardChangeHandler}
             onBlur={validateCardHandler}
           />
           <div
