@@ -110,6 +110,7 @@ const Login = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     props.onLogin(enteredName, enteredCard);
+    // in a similar way, pass the values in changeHandlers to some prop function received from card display component
   };
 
   return (
