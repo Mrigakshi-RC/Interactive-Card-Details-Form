@@ -5,39 +5,39 @@ import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
 
 const Login = (props) => {
-  const [enteredEmail, setEnteredEmail] = useState("");
-  const [emailIsValid, setEmailIsValid] = useState();
-  const [enteredPassword, setEnteredPassword] = useState("");
-  const [passwordIsValid, setPasswordIsValid] = useState();
+  const [enteredName, setenteredName] = useState("");
+  const [nameisValid, setNameIsValid] = useState();
+
+  const [enteredCard, setEnteredCard] = useState("");
+  const [cardIdValid, setCardIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
-  const emailChangeHandler = (event) => {
-    setEnteredEmail(event.target.value);
-
+  const nameChangeHandler = (event) => {
+    setenteredName(event.target.value);
     setFormIsValid(
-      event.target.value.includes("@") && enteredPassword.trim().length > 6
+      /^[a-zA-Z ]*$/.test(event.target.value) && /^[0-9 ]*$/.test(enteredCard)
     );
   };
 
   const passwordChangeHandler = (event) => {
-    setEnteredPassword(event.target.value);
+    setEnteredCard(event.target.value);
 
     setFormIsValid(
-      event.target.value.trim().length > 6 && enteredEmail.includes("@")
+      /^[0-9 ]*$/.test(event.target.value) && /^[a-zA-Z ]*$/.test(enteredName)
     );
   };
 
   const validateEmailHandler = () => {
-    setEmailIsValid(enteredEmail.includes("@"));
+    setNameIsValid(/^[a-zA-Z ]*$/.test(enteredName) );
   };
 
   const validatePasswordHandler = () => {
-    setPasswordIsValid(enteredPassword.trim().length > 6);
+    setCardIsValid(/^[0-9 ]*$/.test(enteredCard));
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(enteredEmail, enteredPassword);
+    props.onLogin(enteredName, enteredCard);
   };
 
   return (
@@ -45,36 +45,38 @@ const Login = (props) => {
       <form onSubmit={submitHandler}>
         <div
           className={`${classes.control} ${
-            emailIsValid === false ? classes.invalid : ""
+            nameisValid === false ? classes.invalid : ""
           }`}
         >
-          <label htmlFor="email">CARDHOLDER NAME</label>
+          <label htmlFor="name">CARDHOLDER NAME</label>
           <input
-            type="email"
-            id="email"
-            value={enteredEmail}
-            onChange={emailChangeHandler}
+            type="text"
+            id="name"
+            value={enteredName}
+            onChange={nameChangeHandler}
             onBlur={validateEmailHandler}
           />
+          <div id="ename" className={classes.emsg}></div>
         </div>
         <div
           className={`${classes.control} ${
-            passwordIsValid === false ? classes.invalid : ""
+            cardIdValid === false ? classes.invalid : ""
           }`}
         >
           <label htmlFor="cardNo">CARD NUMBER</label>
           <input
-            type="tel"
-            pattern="[0-9\s]{13,19}"
-            value={enteredPassword}
+            type="text"
+            id="cardNo"
+            value={enteredCard}
             onChange={passwordChangeHandler}
             onBlur={validatePasswordHandler}
           />
+          <div id="ecard" className={classes.emsg}></div>
         </div>
         <div className={classes.holder}>
           <div
             className={`${classes.control} ${
-              passwordIsValid === false ? classes.invalid : ""
+              cardIdValid === false ? classes.invalid : ""
             }`}
           >
             <label htmlFor="expDate">EXP. DATE (MM/YY)</label>
@@ -83,7 +85,7 @@ const Login = (props) => {
                 type="number"
                 className={classes.holder1}
                 id="expDate"
-                value={enteredPassword}
+                value={enteredCard}
                 onChange={passwordChangeHandler}
                 onBlur={validatePasswordHandler}
               />
@@ -91,15 +93,16 @@ const Login = (props) => {
                 type="number"
                 className={classes.holder2}
                 id="expDate"
-                value={enteredPassword}
+                value={enteredCard}
                 onChange={passwordChangeHandler}
                 onBlur={validatePasswordHandler}
               />
             </div>
+            <div id="eexp" className={classes.emsg}></div>
           </div>
           <div
             className={`${classes.control} ${
-              passwordIsValid === false ? classes.invalid : ""
+              cardIdValid === false ? classes.invalid : ""
             }`}
           >
             <label htmlFor="cvc">CVC</label>
@@ -107,10 +110,11 @@ const Login = (props) => {
               type="number"
               className={classes.holder3}
               id="cvc"
-              value={enteredPassword}
+              value={enteredCard}
               onChange={passwordChangeHandler}
               onBlur={validatePasswordHandler}
             />
+            <div id="ecvc" className={classes.emsg}></div>
           </div>
         </div>
         <div className={classes.actions}>
