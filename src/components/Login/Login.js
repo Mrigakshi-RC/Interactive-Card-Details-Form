@@ -9,7 +9,17 @@ const Login = (props) => {
   const [nameisValid, setNameIsValid] = useState();
 
   const [enteredCard, setEnteredCard] = useState("");
-  const [cardIdValid, setCardIsValid] = useState();
+  const [cardIsValid, setCardIsValid] = useState();
+
+  const [enteredMonth, setEnteredMonth] = useState("");
+  const [monthIsValid, setMonthIsValid] = useState();
+
+  const [enteredYear, setEnteredYear] = useState("");
+  const [yearIsValid, setYearIsValid] = useState();
+
+  const [enteredCVC, setEnteredCVC] = useState("");
+  const [CVCIsValid, setCVCIsValid] = useState();
+
   const [formIsValid, setFormIsValid] = useState(false);
 
   const nameChangeHandler = (event) => {
@@ -21,7 +31,27 @@ const Login = (props) => {
 
   const passwordChangeHandler = (event) => {
     setEnteredCard(event.target.value);
+    setFormIsValid(
+      /^[0-9 ]*$/.test(event.target.value) && /^[a-zA-Z ]*$/.test(enteredName)
+    );
+  };
 
+  const monthChangeHandler = (event) => {
+    setEnteredMonth(event.target.value);
+    setFormIsValid(
+      0<Number(event.target.value) && Number(event.target.value)<=31 && /^[a-zA-Z ]*$/.test(enteredName)
+    );
+  };
+
+  const yearChangeHandler = (event) => {
+    setEnteredYear(event.target.value);
+    setFormIsValid(
+      /^[0-9 ]*$/.test(event.target.value) && /^[a-zA-Z ]*$/.test(enteredName)
+    );
+  };
+
+  const CVCChangeHandler = (event) => {
+    setEnteredCVC(event.target.value);
     setFormIsValid(
       /^[0-9 ]*$/.test(event.target.value) && /^[a-zA-Z ]*$/.test(enteredName)
     );
@@ -33,6 +63,18 @@ const Login = (props) => {
 
   const validatePasswordHandler = () => {
     setCardIsValid(/^[0-9 ]*$/.test(enteredCard));
+  };
+
+  const validateMonthHandler = () => {
+    setMonthIsValid(0<Number(enteredMonth) && Number(enteredMonth)<=31);
+  };
+
+  const validateYearHandler = () => {
+    setYearIsValid(/^[0-9 ]*$/.test(enteredYear));
+  };
+
+  const validateCVCHandler = () => {
+    setCVCIsValid(/^[0-9 ]*$/.test(enteredCVC));
   };
 
   const submitHandler = (event) => {
@@ -60,7 +102,7 @@ const Login = (props) => {
         </div>
         <div
           className={`${classes.control} ${
-            cardIdValid === false ? classes.invalid : ""
+            cardIsValid === false ? classes.invalid : ""
           }`}
         >
           <label htmlFor="cardNo">CARD NUMBER</label>
@@ -76,43 +118,45 @@ const Login = (props) => {
         <div className={classes.holder}>
           <div
             className={`${classes.control} ${
-              cardIdValid === false ? classes.invalid : ""
+              monthIsValid === false || yearIsValid === false ? classes.invalid : ""
             }`}
           >
-            <label htmlFor="expDate">EXP. DATE (MM/YY)</label>
+            <label htmlFor="expMonth">EXP. DATE (MM/YY)</label>
             <div className={classes.subHolder}>
               <input
-                type="number"
+                type="text"
                 className={classes.holder1}
-                id="expDate"
-                value={enteredCard}
-                onChange={passwordChangeHandler}
-                onBlur={validatePasswordHandler}
+                id="expMonth"
+                maxLength="2"
+                value={enteredMonth}
+                onChange={monthChangeHandler}
+                onBlur={validateMonthHandler}
               />
               <input
-                type="number"
+                type="text"
                 className={classes.holder2}
-                id="expDate"
-                value={enteredCard}
-                onChange={passwordChangeHandler}
-                onBlur={validatePasswordHandler}
+                id="expYear"
+                maxLength="2"
+                value={enteredYear}
+                onChange={yearChangeHandler}
+                onBlur={validateYearHandler}
               />
             </div>
             <div id="eexp" className={classes.emsg}></div>
           </div>
           <div
             className={`${classes.control} ${
-              cardIdValid === false ? classes.invalid : ""
+              CVCIsValid === false ? classes.invalid : ""
             }`}
           >
             <label htmlFor="cvc">CVC</label>
             <input
-              type="number"
+              type="text"
               className={classes.holder3}
               id="cvc"
-              value={enteredCard}
-              onChange={passwordChangeHandler}
-              onBlur={validatePasswordHandler}
+              value={enteredCVC}
+              onChange={CVCChangeHandler}
+              onBlur={validateCVCHandler}
             />
             <div id="ecvc" className={classes.emsg}></div>
           </div>
