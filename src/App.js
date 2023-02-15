@@ -4,6 +4,7 @@ import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import MainHeader from "./components/MainHeader/MainHeader";
 import CardFront from "./components/Login/CardFront";
+import CardBack from "./components/Login/CardBack";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -11,6 +12,7 @@ function App() {
   const [text2, setText2] = useState("");
   const [text3, setText3] = useState("");
   const [text4, setText4] = useState("");
+  const [text5, setText5] = useState("");
 
   const trigger1 = (value) => {
     setText1(value);
@@ -23,6 +25,9 @@ function App() {
   };
   const trigger4 = (value) => {
     setText4(value);
+  };
+  const trigger5 = (value) => {
+    setText5(value);
   };
 
   const loginHandler = (email, password) => {
@@ -46,6 +51,7 @@ function App() {
               trigger2={trigger2}
               trigger3={trigger3}
               trigger4={trigger4}
+              trigger5={trigger5}
             />
           )}
           {!isLoggedIn && (
@@ -54,6 +60,11 @@ function App() {
             text2={text2}
             text3={text3}
             text4={text4}
+            />
+          )}
+          {!isLoggedIn && (
+            <CardBack
+            text5={text5}
             />
           )}
         {isLoggedIn && <Home onLogout={logoutHandler} />}

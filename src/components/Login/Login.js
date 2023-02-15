@@ -98,6 +98,7 @@ const Login = (props) => {
     setFormIsValid(
       event.target.value.length!==0 && /^[0-9 ]*$/.test(event.target.value) && goodToGo(CVCIsValid)
     );
+    props.trigger5(event.target.value);
   };
 
   const validateNameHandler = () => {

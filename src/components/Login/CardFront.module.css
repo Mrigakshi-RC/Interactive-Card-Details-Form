@@ -1,14 +1,19 @@
 .container{
     margin-top:auto;
     background-image:url("C:\Users\mriga\Frontend stuff\React\Interactive-Card-Details-Form\images\bg-card-front.png");
-    width:27.965rem;
-    height:15.34rem;
-    padding:0.5rem 2rem 1.5rem 2rem;
+    background-size:100% 100%;
+    width:30rem;
+    height:17.5rem;
+    padding:1rem 2rem 1rem 2rem;
     text-transform: uppercase;
 }
 
 .holder{
     display:flex;
+}
+
+.dotsHolder{
+    margin-bottom:3.5rem;
 }
 
 .bigDot {
@@ -35,11 +40,12 @@
 }
 
 .topText{
-    font-size:1.7rem;
+    font-size:1.9rem;
     letter-spacing:0.2rem;
 }
 
 .subText{
+    font-size:1.1rem;
     letter-spacing:0.1rem;;
 }
 .subText:nth-of-type(2){
