@@ -10,7 +10,7 @@
     width:28rem;
     height:17rem;
     padding:1rem;
-    position:relative;
+    position:absolute;
 }
 
 .cvc{
@@ -21,4 +21,13 @@
     font-size:0.9rem;
     letter-spacing:0.1rem;
     color: var(--white);
+}
+
+@media only screen and (max-width: 412px){
+    .container{
+        position:absolute;
+        margin-top:-2.5rem;
+        margin-left:10rem;
+        margin-bottom:0;
+    }
 }

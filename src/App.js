@@ -45,28 +45,19 @@ function App() {
       <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
       <main>
         {!isLoggedIn && (
-            <Login
-              onLogin={loginHandler}
-              trigger1={trigger1}
-              trigger2={trigger2}
-              trigger3={trigger3}
-              trigger4={trigger4}
-              trigger5={trigger5}
-            />
-          )}
-          {!isLoggedIn && (
-            <CardFront
-            text1={text1}
-            text2={text2}
-            text3={text3}
-            text4={text4}
-            />
-          )}
-          {!isLoggedIn && (
-            <CardBack
-            text5={text5}
-            />
-          )}
+          <Login
+            onLogin={loginHandler}
+            trigger1={trigger1}
+            trigger2={trigger2}
+            trigger3={trigger3}
+            trigger4={trigger4}
+            trigger5={trigger5}
+          />
+        )}
+        <CardFront text1={text1} text2={text2} text3={text3} text4={text4} />
+
+        <CardBack text5={text5} />
+
         {isLoggedIn && <Home onLogout={logoutHandler} />}
       </main>
     </React.Fragment>

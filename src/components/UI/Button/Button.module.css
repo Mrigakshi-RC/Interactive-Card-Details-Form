@@ -12,7 +12,7 @@
 
 }
 
-.button:hover,
+/* .button:hover,
 .button:active {
   background: #741188;
   border-color: #741188;
@@ -20,7 +20,7 @@
 
 .button:focus {
   outline: none;
-}
+} */
 
 button:disabled,
 button:focus:disabled,
@@ -29,4 +29,12 @@ button:active:disabled {
   background: #ccc;
   color: #666666;
   cursor: not-allowed;
+}
+
+@media only screen and (max-width: 375px){
+  .button{
+    height:5.5rem;
+    font-size:2.15rem;
+    margin-top:0.3rem;
+  }
 }
