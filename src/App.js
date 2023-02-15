@@ -54,9 +54,9 @@ function App() {
             trigger5={trigger5}
           />
         )}
-        <CardFront text1={text1} text2={text2} text3={text3} text4={text4} />
+        <CardFront text1={text1} text2={text2} text3={text3} text4={text4} login={isLoggedIn} />
 
-        <CardBack text5={text5} />
+        <CardBack text5={text5} login={isLoggedIn}/>
 
         {isLoggedIn && <Home onLogout={logoutHandler} />}
       </main>

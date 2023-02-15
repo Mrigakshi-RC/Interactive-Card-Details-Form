@@ -29,8 +29,20 @@ const Login = (props) => {
 
   const [formIsValid, setFormIsValid] = useState(false);
 
-  const parameters=[nameIsValid,cardIsValid,monthIsValid,yearIsValid,CVCIsValid];
-  const values=[enteredName,enteredCard,enteredMonth,enteredYear,enteredCVC];
+  const parameters = [
+    nameIsValid,
+    cardIsValid,
+    monthIsValid,
+    yearIsValid,
+    CVCIsValid,
+  ];
+  const values = [
+    enteredName,
+    enteredCard,
+    enteredMonth,
+    enteredYear,
+    enteredCVC,
+  ];
 
   const checkEmpty = (arr, message) => {
     for (let i = 0; i < arr.length; i++) {
@@ -42,35 +54,53 @@ const Login = (props) => {
   };
 
   const goodToGo = (value) => {
-    let count=0;
-    for (let i=0; i<parameters.length; i++){
-      if (parameters[i] && values[i].length!==0){
-        count+=1;
+    let count = 0;
+    for (let i = 0; i < parameters.length; i++) {
+      if (parameters[i] && values[i].length !== 0) {
+        count += 1;
       }
     }
-    return count>=4;
-  }
+    return count >= 4;
+  };
+
+  //to handle the abnormality which was happening on pressing Backspace on Card number input.
+  const onBackspace = (event) => {
+    if (event.key === "Backspace") {
+      var val = event.target.value;
+      var valSpace = val.split("");
+
+      if (valSpace[valSpace.length - 1] === " ") {
+        var valSpaceN = valSpace.slice(0, -1);
+        val = valSpaceN.join("");
+        setEnteredCard(val);
+        return;
+      }
+    }
+  };
 
   const nameChangeHandler = (event) => {
     setenteredName(event.target.value);
     setFormIsValid(
-      event.target.value.length!==0 && /^[a-zA-Z ]*$/.test(event.target.value) && goodToGo(nameIsValid)
+      event.target.value.length !== 0 &&
+        /^[a-zA-Z ]*$/.test(event.target.value) &&
+        goodToGo(nameIsValid)
     );
     props.trigger2(event.target.value);
   };
 
   const cardChangeHandler = (event) => {
-    if (flag===0 && event.target.value.trim().length%4===0){
-      event.target.value+=" ";
+    if (flag === 0 && event.target.value.trim().length % 4 === 0) {
+      event.target.value += " ";
       setFlag(1);
-    }
-    else if (flag===1 && event.target.value.trim().length%5===4){
-      event.target.value+=" ";
+    } else if (flag === 1 && event.target.value.trim().length % 5 === 4) {
+      event.target.value += " ";
     }
 
     setEnteredCard(event.target.value);
     setFormIsValid(
-      event.target.value.length!==0 && /^[0-9 ]*$/.test(event.target.value) && goodToGo(cardIsValid)
+      event.target.value.length !== 0 &&
+        /^[0-9 ]*$/.test(event.target.value) &&
+        goodToGo(cardIsValid)
     );
     props.trigger1(event.target.value);
   };
@@ -78,7 +108,8 @@ const Login = (props) => {
   const monthChangeHandler = (event) => {
     setEnteredMonth(event.target.value);
     setFormIsValid(
-      event.target.value.length!==0 && 0 < Number(event.target.value) &&
+      event.target.value.length !== 0 &&
+        0 < Number(event.target.value) &&
         Number(event.target.value) <= 31 &&
         goodToGo(monthIsValid)
     );
@@ -88,7 +119,9 @@ const Login = (props) => {
   const yearChangeHandler = (event) => {
     setEnteredYear(event.target.value);
     setFormIsValid(
-      event.target.value.length!==0 && /^[0-9 ]*$/.test(event.target.value) && goodToGo(yearIsValid)
+      event.target.value.length !== 0 &&
+        /^[0-9 ]*$/.test(event.target.value) &&
+        goodToGo(yearIsValid)
     );
     props.trigger4(event.target.value);
   };
@@ -96,30 +129,37 @@ const Login = (props) => {
   const CVCChangeHandler = (event) => {
     setEnteredCVC(event.target.value);
     setFormIsValid(
-      event.target.value.length!==0 && /^[0-9 ]*$/.test(event.target.value) && goodToGo(CVCIsValid)
+      event.target.value.length !== 0 &&
+        /^[0-9 ]*$/.test(event.target.value) &&
+        goodToGo(CVCIsValid)
     );
     props.trigger5(event.target.value);
   };
 
   const validateNameHandler = () => {
-    setNameIsValid(enteredName.length!==0 && /^[a-zA-Z ]*$/.test(enteredName));
+    setNameIsValid(
+      enteredName.length !== 0 && /^[a-zA-Z ]*$/.test(enteredName)
+    );
   };
 
   const validateCardHandler = () => {
-    setCardIsValid(enteredCard.length!==0 && /^[0-9 ]*$/.test(enteredCard));
+    setCardIsValid(enteredCard.length !== 0 && /^[0-9 ]*$/.test(enteredCard));
   };
 
   const validateMonthHandler = () => {
-    setMonthIsValid(enteredMonth.length!==0 && 0 < Number(enteredMonth) && Number(enteredMonth) <= 12
+    setMonthIsValid(
+      enteredMonth.length !== 0 &&
+        0 < Number(enteredMonth) &&
+        Number(enteredMonth) <= 12
     );
   };
 
   const validateYearHandler = () => {
-    setYearIsValid(enteredYear.length!==0 && /^[0-9 ]*$/.test(enteredYear));
+    setYearIsValid(enteredYear.length !== 0 && /^[0-9 ]*$/.test(enteredYear));
   };
 
   const validateCVCHandler = () => {
-    setCVCIsValid(enteredCVC.length!==0 && /^[0-9 ]*$/.test(enteredCVC));
+    setCVCIsValid(enteredCVC.length !== 0 && /^[0-9 ]*$/.test(enteredCVC));
   };
 
   const submitHandler = (event) => {
@@ -141,7 +181,7 @@ const Login = (props) => {
           <input
             type="text"
             id="name"
-            placeholder= "e.g. Priya Roy"
+            placeholder="e.g. Priya Roy"
             value={enteredName}
             onChange={nameChangeHandler}
             onBlur={validateNameHandler}
@@ -166,9 +206,10 @@ const Login = (props) => {
           <input
             type="text"
             id="cardNo"
-            placeholder= "e.g. 1234 5678 9123 0000"
+            placeholder="e.g. 1234 5678 9123 0000"
             value={enteredCard}
             onChange={cardChangeHandler}
+            onKeyDown={onBackspace}
             onBlur={validateCardHandler}
           />
           <div
@@ -197,7 +238,7 @@ const Login = (props) => {
                 className={classes.holder1}
                 id="expMonth"
                 maxLength="2"
-                placeholder= "MM"
+                placeholder="MM"
                 value={enteredMonth}
                 onChange={monthChangeHandler}
                 onBlur={validateMonthHandler}
@@ -207,7 +248,7 @@ const Login = (props) => {
                 className={classes.holder2}
                 id="expYear"
                 maxLength="2"
-                placeholder= "YY"
+                placeholder="YY"
                 value={enteredYear}
                 onChange={yearChangeHandler}
                 onBlur={validateYearHandler}
@@ -221,7 +262,7 @@ const Login = (props) => {
                   : ""
               }`}
             >
-              <p>{checkEmpty([enteredMonth,enteredYear], invalidError)}</p>
+              <p>{checkEmpty([enteredMonth, enteredYear], invalidError)}</p>
             </div>
           </div>
 
@@ -236,7 +277,7 @@ const Login = (props) => {
               type="text"
               className={classes.holder3}
               id="cvc"
-              placeholder= "e.g. 123"
+              placeholder="e.g. 123"
               value={enteredCVC}
               onChange={CVCChangeHandler}
               onBlur={validateCVCHandler}
@@ -244,7 +285,7 @@ const Login = (props) => {
             <div
               id="ecvc"
               className={`${classes.emsg} ${
-                CVCIsValid===false ? classes.invalidMsg : ""
+                CVCIsValid === false ? classes.invalidMsg : ""
               }`}
             >
               <p>{checkEmpty([enteredCVC], numbersError)}</p>

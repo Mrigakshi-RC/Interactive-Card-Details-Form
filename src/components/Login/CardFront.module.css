@@ -9,6 +9,17 @@
     text-transform: uppercase;
 }
 
+.logIn{
+    background-image:url("C:\Users\mriga\Frontend stuff\React\Interactive-Card-Details-Form\images\bg-card-front.png");
+    background-size:100% 100%;
+    width:30rem;
+    height:17.5rem;
+    padding:1rem 2rem 1rem 2rem;
+    text-transform: uppercase;
+    margin-left:10rem;
+    margin-top:14rem;
+}
+
 .holder{
     display:flex;
 }

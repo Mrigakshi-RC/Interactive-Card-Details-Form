@@ -13,6 +13,17 @@
     position:absolute;
 }
 
+.logIn{
+    background-image: url("C:\Users\mriga\Frontend stuff\React\Interactive-Card-Details-Form\images\bg-card-back.png");
+    background-size:100% 100%;
+    width:28rem;
+    height:17rem;
+    padding:1rem;
+    position:absolute;
+    margin-left:17rem;
+    margin-top:2.5rem;
+}
+
 .cvc{
     margin-top:6.8rem;
     margin-left:auto;
