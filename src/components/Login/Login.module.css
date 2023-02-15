@@ -8,6 +8,11 @@
   font-family: 'Space Grotesk', sans-serif;
 }
 
+input::placeholder{
+  color:hsl(270, 3%, 87%);
+  font-size:1.1rem;
+} 
+
 .login {
   width: 90%;
   max-width: 40rem;
@@ -29,17 +34,20 @@
 
 .control label {
   flex: 1;
-  color: #464646;
+  color:  hsl(278, 68%, 11%);
   margin-bottom: 0.5rem;
+  letter-spacing:0.1rem;
+  font-size: 0.9rem;
 }
 
 .control input {
   /* flex: 3; */
   width:100%;
-  font-size:1.2rem;
-  padding: 0.35rem 0.35rem;
+  font-size:1.1rem;
+  padding: 0.6rem 0.6rem;
   border-radius: 6px;
   border: 1px solid #ccc;
+  color:  hsl(278, 68%, 11%);
 }
 
 .holder{
@@ -83,7 +91,6 @@
 .control input:focus {
   outline: none;
   border-color: #4f005f;
-  background: #f6dbfc;
 }
 
 .control.invalid input {

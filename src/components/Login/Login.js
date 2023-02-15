@@ -141,6 +141,7 @@ const Login = (props) => {
           <input
             type="text"
             id="name"
+            placeholder= "e.g. Priya Roy"
             value={enteredName}
             onChange={nameChangeHandler}
             onBlur={validateNameHandler}
@@ -165,6 +166,7 @@ const Login = (props) => {
           <input
             type="text"
             id="cardNo"
+            placeholder= "e.g. 1234 5678 9123 0000"
             value={enteredCard}
             onChange={cardChangeHandler}
             onBlur={validateCardHandler}
@@ -195,6 +197,7 @@ const Login = (props) => {
                 className={classes.holder1}
                 id="expMonth"
                 maxLength="2"
+                placeholder= "MM"
                 value={enteredMonth}
                 onChange={monthChangeHandler}
                 onBlur={validateMonthHandler}
@@ -204,6 +207,7 @@ const Login = (props) => {
                 className={classes.holder2}
                 id="expYear"
                 maxLength="2"
+                placeholder= "YY"
                 value={enteredYear}
                 onChange={yearChangeHandler}
                 onBlur={validateYearHandler}
@@ -232,6 +236,7 @@ const Login = (props) => {
               type="text"
               className={classes.holder3}
               id="cvc"
+              placeholder= "e.g. 123"
               value={enteredCVC}
               onChange={CVCChangeHandler}
               onBlur={validateCVCHandler}
