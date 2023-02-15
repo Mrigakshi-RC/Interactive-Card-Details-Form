@@ -36,9 +36,21 @@
 
 @media only screen and (max-width: 412px){
     .container{
-        position:absolute;
         margin-top:-2.5rem;
         margin-left:10rem;
         margin-bottom:0;
+    }
+    .logIn{
+        margin:0;
+        margin-top:-38rem;
+        margin-left:25rem;
+        width:35rem;
+        height:22rem;
+        z-index:-1;
+    }
+    .logIn .cvc{
+        margin-top:8.8rem;
+        margin-right:1.5rem;
+        font-size:1.5rem;
     }
 }

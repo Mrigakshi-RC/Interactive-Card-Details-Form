@@ -1,12 +1,29 @@
 .home {
   position:absolute;
   text-align: center;
-  width: 35%;
+  width: 33%;
   max-width: 40rem;
   height: 30rem;
   margin: 2rem auto;
   margin-left: 50rem;
-  margin-top: -15rem;
-  padding: 2rem;
-  border:solid;
+  margin-top: -8rem;
+}
+
+.complete{
+  width:6rem;
+  height:6rem;
+  margin:auto;
+  background-image: url("C:\Users\mriga\Frontend stuff\React\Interactive-Card-Details-Form\images\icon-complete.svg");
+  background-size: 100% 100%;
+}
+
+h1{
+  letter-spacing:0.1rem;
+  font-weight:450;
+}
+
+p{
+  font-size:1.3rem;
+  color:hsl(279, 6%, 55%);
+  margin-bottom:2rem;
 }
