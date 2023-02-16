@@ -28,7 +28,7 @@ p{
   margin-bottom:2rem;
 }
 
-@media only screen and (max-width: 412px){
+@media only screen and (max-width: 415px){
   .home{
     width:200%;
     margin-left:23rem;
