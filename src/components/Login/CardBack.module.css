@@ -1,61 +1,61 @@
-:root{
-    --white: hsl(0, 0%, 100%);
+:root {
+  --white: hsl(0, 0%, 100%);
 }
 
-.container{
-    margin-top:2.5rem;
-    margin-left:17rem;
-    background-image: url("C:\Users\mriga\Frontend stuff\React\Interactive-Card-Details-Form\images\bg-card-back.png");
-    background-size:100% 100%;
-    width:28rem;
-    height:17rem;
-    padding:1rem;
-    position:absolute;
-    border-radius:9px;
-    box-shadow: 6px 20px 55px rgba(0, 0, 0, 0.2);
+.container {
+  margin-top: 2.5rem;
+  margin-left: 17rem;
+  background-image: url("C:\Users\mriga\Frontend stuff\React\Interactive-Card-Details-Form\images\bg-card-back.png");
+  background-size: 100% 100%;
+  width: 28rem;
+  height: 17rem;
+  padding: 1rem;
+  position: absolute;
+  border-radius: 9px;
+  box-shadow: 6px 20px 55px rgba(0, 0, 0, 0.2);
 }
 
-.logIn{
-    background-image: url("C:\Users\mriga\Frontend stuff\React\Interactive-Card-Details-Form\images\bg-card-back.png");
-    background-size:100% 100%;
-    width:28rem;
-    height:17rem;
-    padding:1rem;
-    position:absolute;
-    margin-left:17rem;
-    margin-top:2.5rem;
-    border-radius:9px;
-    box-shadow: 6px 20px 55px rgba(0, 0, 0, 0.2);
+.logIn {
+  background-image: url("C:\Users\mriga\Frontend stuff\React\Interactive-Card-Details-Form\images\bg-card-back.png");
+  background-size: 100% 100%;
+  width: 28rem;
+  height: 17rem;
+  padding: 1rem;
+  position: absolute;
+  margin-left: 17rem;
+  margin-top: 2.5rem;
+  border-radius: 9px;
+  box-shadow: 6px 20px 55px rgba(0, 0, 0, 0.2);
 }
 
-.cvc{
-    margin-top:6.8rem;
-    margin-left:auto;
-    position:absolute;
-    right:3.5rem;
-    font-size:0.9rem;
-    letter-spacing:0.1rem;
-    color: var(--white);
+.cvc {
+  margin-top: 6.8rem;
+  margin-left: auto;
+  position: absolute;
+  right: 3.5rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.1rem;
+  color: var(--white);
 }
 
-@media only screen and (max-width: 415px){
-    .container{
-        margin-top:-2.5rem;
-        margin-left:10rem;
-        margin-bottom:0;
-    }
-    .logIn{
-        position:absolute;
-        margin:0;
-        margin-top:-41.5rem;
-        margin-left:23rem;
-        width:37rem;
-        height:25rem;
-        z-index:-1;
-    }
-    .logIn .cvc{
-        margin-top:10rem;
-        margin-right:1.5rem;
-        font-size:1.5rem;
-    }
+@media only screen and (max-width: 415px) {
+  .container {
+    margin-top: -2.5rem;
+    margin-left: 10rem;
+    margin-bottom: 0;
+  }
+  .logIn {
+    position: absolute;
+    margin: 0;
+    margin-top: -41.5rem;
+    margin-left: 23rem;
+    width: 37rem;
+    height: 25rem;
+    z-index: -1;
+  }
+  .logIn .cvc {
+    margin-top: 10rem;
+    margin-right: 1.5rem;
+    font-size: 1.5rem;
+  }
 }

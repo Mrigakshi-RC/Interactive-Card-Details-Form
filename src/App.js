@@ -30,19 +30,13 @@ function App() {
     setText5(value);
   };
 
-  const loginHandler = (email, password) => {
-    // We should of course check email and password
-    // But it's just a dummy/ demo anyways
+  const loginHandler = () => {
     setIsLoggedIn(true);
-  };
-
-  const logoutHandler = () => {
-    setIsLoggedIn(false);
   };
 
   return (
     <React.Fragment>
-      <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
+      <MainHeader/>
       <main>
         {!isLoggedIn && (
           <Login
@@ -54,11 +48,17 @@ function App() {
             trigger5={trigger5}
           />
         )}
-        <CardFront text1={text1} text2={text2} text3={text3} text4={text4} login={isLoggedIn} />
+        <CardFront
+          text1={text1}
+          text2={text2}
+          text3={text3}
+          text4={text4}
+          login={isLoggedIn}
+        />
 
-        <CardBack text5={text5} login={isLoggedIn}/>
+        <CardBack text5={text5} login={isLoggedIn} />
 
-        {isLoggedIn && <Home onLogout={logoutHandler} />}
+        {isLoggedIn && <Home/>}
       </main>
     </React.Fragment>
   );

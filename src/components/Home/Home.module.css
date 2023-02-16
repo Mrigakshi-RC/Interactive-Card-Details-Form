@@ -1,5 +1,5 @@
 .home {
-  position:absolute;
+  position: absolute;
   text-align: center;
   width: 33%;
   max-width: 40rem;
@@ -9,53 +9,52 @@
   margin-top: -8rem;
 }
 
-.complete{
-  width:6rem;
-  height:6rem;
-  margin:auto;
+.complete {
+  width: 6rem;
+  height: 6rem;
+  margin: auto;
   background-image: url("C:\Users\mriga\Frontend stuff\React\Interactive-Card-Details-Form\images\icon-complete.svg");
   background-size: 100% 100%;
 }
 
-h1{
-  letter-spacing:0.1rem;
-  font-weight:450;
+h1 {
+  letter-spacing: 0.1rem;
+  font-weight: 450;
 }
 
-p{
-  font-size:1.3rem;
-  color:hsl(279, 6%, 55%);
-  margin-bottom:2rem;
+p {
+  font-size: 1.3rem;
+  color: hsl(279, 6%, 55%);
+  margin-bottom: 2rem;
 }
 
-@media only screen and (max-width: 415px){
-  .home{
-    width:200%;
-    margin-left:23rem;
-    margin-top:8rem;
-    padding-right:5rem;
+@media only screen and (max-width: 415px) {
+  .home {
+    width: 200%;
+    margin-left: 23rem;
+    margin-top: 8rem;
+    padding-right: 5rem;
   }
-  .complete{
-    width:14rem;
-    height:14rem;
-    margin-left:-0.5rem;
+  .complete {
+    width: 14rem;
+    height: 14rem;
+    margin-left: -0.5rem;
   }
- .thankYou{
-    font-size:5rem;
-    margin-left:-22rem;
-    
-  }
-  
-  .added{
-    font-size:3rem;
-    margin-left:-20rem;
-    margin-bottom:5rem;
+  .thankYou {
+    font-size: 5rem;
+    margin-left: -22rem;
   }
 
-  .buttonComplete{
-    margin-left:-18rem;
-    height:8rem;
-    width:50rem;
-    font-size:2.5rem;
+  .added {
+    font-size: 3rem;
+    margin-left: -20rem;
+    margin-bottom: 5rem;
+  }
+
+  .buttonComplete {
+    margin-left: -18rem;
+    height: 8rem;
+    width: 50rem;
+    font-size: 2.5rem;
   }
 }
