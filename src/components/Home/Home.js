@@ -8,8 +8,8 @@ const Home = () => {
   return (
     <Card className={classes.home}>
       <div className={classes.complete}></div>
-      <h1>THANK YOU!</h1>
-      <p>We have added your card details</p>
+      <h1 className={classes.thankYou}>THANK YOU!</h1>
+      <p className={classes.added}>We have added your card details</p>
       <Button className={classes.buttonComplete}>Continue</Button>
     </Card>
   );

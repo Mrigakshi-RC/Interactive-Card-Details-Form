@@ -74,8 +74,9 @@
       z-index:1;
     }
     .logIn{
-        width:40rem;
-        height:23rem;
+        postion:absolute;
+        width:45rem;
+        height:27rem;
         margin-left:5rem;
         margin-top:20rem;
         padding:3rem;
@@ -83,7 +84,7 @@
     }
     .logIn .topText{
         font-size:3rem;
-        margin-top:6rem;
+        margin-top:9rem;
     }
     .logIn .subText{
         margin-top:-0.5rem;

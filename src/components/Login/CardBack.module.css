@@ -41,15 +41,16 @@
         margin-bottom:0;
     }
     .logIn{
+        position:absolute;
         margin:0;
-        margin-top:-38rem;
-        margin-left:25rem;
-        width:35rem;
-        height:22rem;
+        margin-top:-41.5rem;
+        margin-left:23rem;
+        width:37rem;
+        height:25rem;
         z-index:-1;
     }
     .logIn .cvc{
-        margin-top:8.8rem;
+        margin-top:10rem;
         margin-right:1.5rem;
         font-size:1.5rem;
     }
