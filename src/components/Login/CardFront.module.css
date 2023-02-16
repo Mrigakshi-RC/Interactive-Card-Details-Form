@@ -7,6 +7,8 @@
     height:17.5rem;
     padding:1rem 2rem 1rem 2rem;
     text-transform: uppercase;
+    border-radius:9px;
+    box-shadow: 15px 20px 55px rgba(0, 0, 0, 0.2);
 }
 
 .logIn{
@@ -18,6 +20,8 @@
     text-transform: uppercase;
     margin-left:10rem;
     margin-top:14rem;
+    border-radius:9px;
+    box-shadow: 15px 20px 55px rgba(0, 0, 0, 0.2);
 }
 
 .holder{

@@ -11,6 +11,8 @@
     height:17rem;
     padding:1rem;
     position:absolute;
+    border-radius:9px;
+    box-shadow: 6px 20px 55px rgba(0, 0, 0, 0.2);
 }
 
 .logIn{
@@ -22,6 +24,8 @@
     position:absolute;
     margin-left:17rem;
     margin-top:2.5rem;
+    border-radius:9px;
+    box-shadow: 6px 20px 55px rgba(0, 0, 0, 0.2);
 }
 
 .cvc{
